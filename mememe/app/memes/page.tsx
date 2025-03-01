@@ -27,7 +27,7 @@ export default function Memes() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <div className="w-full max-w-md mx-auto px-4 py-6">
+      <div className="w-full max-w-md mx-auto px-8 py-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Link href="/coins">

@@ -14,7 +14,7 @@ export default function CreateAccount() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-white">
-      <div className={`w-full max-w-md mx-auto flex flex-col items-center px-4 ${comicSans.className}`}>
+      <div className={`w-full max-w-md mx-auto flex flex-col items-center px-16 ${comicSans.className}`}>
         {/* Header */}
         <div className="w-full text-center mb-16">
           <h1 className="text-[42px] font-black leading-tight tracking-tight mb-2">Name your account</h1>
