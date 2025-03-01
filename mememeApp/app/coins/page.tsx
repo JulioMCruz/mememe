@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import {
-  SmileIcon,
+  ArrowLeftIcon,
   Share2Icon,
   MoreHorizontalIcon,
   PlusIcon,
@@ -10,19 +11,26 @@ import {
   SearchIcon,
   FilterIcon,
 } from "lucide-react"
-import Link from "next/link"
+import CoinModal from "@/components/coin-modal"
 
+interface Coin {
+  name: string
+  color: string
+  change: string
+  amount: string
+  isPositive: boolean
+}
 
-export default function Memes() {
-  const [searchQuery, setSearchQuery] = useState("cute animals")
+export default function Coins() {
+  const [searchQuery, setSearchQuery] = useState("doge")
+  const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null)
 
-  const memeCoins = [
-    { rank: 1, name: "APU", color: "bg-green-300", change: "+98%", isPositive: true },
-    { rank: 2, name: "PEPE", color: "bg-yellow-300", change: "+33%", isPositive: true },
-    { rank: 3, name: "FWOG", color: "bg-pink-300", change: "+12%", isPositive: true },
-    { rank: 4, name: "DOGE", color: "bg-red-300", change: "-1%", isPositive: false },
-    { rank: 5, name: "SHIB", color: "bg-red-300", change: "-7%", isPositive: false },
-    { rank: 6, name: "BONK", color: "bg-red-300", change: "-157%", isPositive: false },
+  const myCoins: Coin[] = [
+    { name: "APU", color: "bg-green-300", change: "+362%", amount: "$3.00", isPositive: true },
+    { name: "PEPE", color: "bg-yellow-300", change: "+123%", amount: "$2.50", isPositive: true },
+    { name: "FWOG", color: "bg-pink-300", change: "+12%", amount: "$1.20", isPositive: true },
+    { name: "DOGE", color: "bg-red-300", change: "-1%", amount: "$0.95", isPositive: false },
+    { name: "BONK", color: "bg-red-300", change: "-200%", amount: "$0.10", isPositive: false },
   ]
 
   return (
@@ -30,13 +38,11 @@ export default function Memes() {
       <div className="w-full max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <Link href="/coins">
-            <div className="flex items-center">
-                <div className="w-10 h-10 bg-green-300 rounded-full flex items-center justify-center border-2 border-black">
-                  <SmileIcon className="w-6 h-6" />
-                </div>
-              <span className="text-2xl font-bold ml-2">Bictor's</span>
+          <Link href="/memes" className="flex items-center">
+            <div className="w-10 h-10 bg-pink-300 rounded-full flex items-center justify-center border-2 border-black">
+              <ArrowLeftIcon className="w-6 h-6" />
             </div>
+            <span className="text-2xl font-bold ml-2">Home</span>
           </Link>
 
           <div className="flex items-center">
@@ -60,26 +66,21 @@ export default function Memes() {
 
         {/* Action Buttons */}
         <div className="flex gap-4 mb-8">
-          <Link 
-            href="/deposit" 
-            className="w-14 h-14 bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]"
-          >
+          <button className="w-14 h-14 bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
             <PlusIcon className="w-8 h-8" />
-          </Link>
-          <Link href="/withdraw">
-            <button className="w-14 h-14 bg-white border-2 border-black rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
-              <ArrowUpRightIcon className="w-8 h-8" />
-            </button>
-          </Link>
+          </button>
+          <button className="w-14 h-14 bg-white border-2 border-black rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
+            <ArrowUpRightIcon className="w-8 h-8" />
+          </button>
         </div>
 
-        {/* Memes of the day */}
+        {/* My Coins */}
         <div className="mb-6">
           <div className="relative mb-4">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 p-1">
+            <div className="absolute inset-0 rounded-full bg-yellow-300 p-1">
               <div className="absolute inset-0 bg-white rounded-full"></div>
             </div>
-            <h2 className="relative z-10 text-3xl font-black text-center py-2">Memes of the day</h2>
+            <h2 className="relative z-10 text-3xl font-black text-center py-2">My coins</h2>
           </div>
 
           {/* Search Bar */}
@@ -98,13 +99,16 @@ export default function Memes() {
             </div>
           </div>
 
-          {/* Meme List */}
+          {/* Coin List */}
           <div className="space-y-4">
-            {memeCoins.map((coin) => (
-              <div key={coin.rank} className="flex items-center justify-between">
+            {myCoins.map((coin, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={() => setSelectedCoin(coin)}
+              >
                 <div className="flex items-center">
-                  <span className="text-3xl font-black mr-2">#{coin.rank}</span>
-                  <div className={`w-8 h-8 ${coin.color} rounded-full border-2 border-black mr-2`}></div>
+                  <div className={`w-10 h-10 ${coin.color} rounded-full border-2 border-black mr-3`}></div>
                   <span className="text-2xl font-bold">{coin.name}</span>
                 </div>
                 <div className="flex items-center">
@@ -118,6 +122,9 @@ export default function Memes() {
           </div>
         </div>
       </div>
+
+      {/* Coin Modal */}
+      <CoinModal isOpen={!!selectedCoin} onClose={() => setSelectedCoin(null)} coin={selectedCoin || myCoins[0]} />
     </main>
   )
 }

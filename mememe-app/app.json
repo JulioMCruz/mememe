@@ -1,0 +1,10 @@
+{
+  "name": "mememe-app",
+  "slug": "mememe-app",
+  "ios": {
+    "bundleIdentifier": "com.juliomcruz.mememe-app"
+  },
+  "android": {
+    "package": "com.juliomcruz.mememeapp"
+  }
+}

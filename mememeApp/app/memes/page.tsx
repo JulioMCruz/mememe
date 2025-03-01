@@ -66,11 +66,9 @@ export default function Memes() {
           >
             <PlusIcon className="w-8 h-8" />
           </Link>
-          <Link href="/withdraw">
-            <button className="w-14 h-14 bg-white border-2 border-black rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
-              <ArrowUpRightIcon className="w-8 h-8" />
-            </button>
-          </Link>
+          <button className="w-14 h-14 bg-white border-2 border-black rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
+            <ArrowUpRightIcon className="w-8 h-8" />
+          </button>
         </div>
 
         {/* Memes of the day */}
