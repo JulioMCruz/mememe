@@ -53,7 +53,7 @@ export default function Deposit() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-white">
-      <div className="w-full max-w-md mx-auto flex flex-col items-center px-6">
+      <div className="w-full max-w-md mx-auto flex flex-col items-center px-16">
         {/* Header */}
         <div className="w-full text-center mb-12">
           <h1 className="text-[42px] font-black leading-tight tracking-tight mb-2">Deposit</h1>
