@@ -10,6 +10,8 @@ import {
   SearchIcon,
   FilterIcon,
 } from "lucide-react"
+import Link from "next/link"
+
 
 export default function Memes() {
   const [searchQuery, setSearchQuery] = useState("cute animals")
@@ -28,12 +30,14 @@ export default function Memes() {
       <div className="w-full max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-green-300 rounded-full flex items-center justify-center border-2 border-black">
-              <SmileIcon className="w-6 h-6" />
+          <Link href="/coins">
+            <div className="flex items-center">
+                <div className="w-10 h-10 bg-green-300 rounded-full flex items-center justify-center border-2 border-black">
+                  <SmileIcon className="w-6 h-6" />
+                </div>
+              <span className="text-2xl font-bold ml-2">Bictor's</span>
             </div>
-            <span className="text-2xl font-bold ml-2">Bictor's</span>
-          </div>
+          </Link>
 
           <div className="flex items-center">
             <button className="p-2">

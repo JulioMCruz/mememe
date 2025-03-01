@@ -53,7 +53,7 @@ export default function Deposit() {
 
         {/* Confirm Button */}
         <Link
-          href="#"
+          href="/ready"
           className="inline-block"
         >
           <Image
