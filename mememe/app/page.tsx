@@ -35,7 +35,7 @@ export default function Home() {
           {/* CTA Button */}
           <div className="mt-12 mb-8">
             <Link
-              href="#"
+              href="/create-account"
               className="inline-block  font-bold text-2xl px-12 py-4 rounded-full "
             >
               <Image

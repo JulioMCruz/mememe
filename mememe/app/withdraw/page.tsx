@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Withdraw() {
   const [amount, setAmount] = useState("$10")
@@ -52,9 +53,15 @@ export default function Withdraw() {
         {/* Confirm Button */}
         <Link
           href="#"
-          className="inline-block bg-cyan-300 text-black font-bold text-2xl px-12 py-4 rounded-full shadow-[0_4px_0_rgba(0,0,0,0.25)] hover:bg-cyan-400 transition-colors"
+          className="inline-block"
         >
-          Confirm
+          <Image
+            src="confirm-blue.png"
+            alt="Confirm button"
+            width={200}
+            height={50}
+            className="w-auto h-auto"
+          />
         </Link>
       </div>
     </main>

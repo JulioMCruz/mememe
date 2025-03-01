@@ -8,7 +8,7 @@ export default function Ready() {
         <div className="w-full text-center mb-12">
           <div className="mb-4">
             <Image
-              src="you-ready.png"
+              src="your-ready.png"
               alt="You're ready"
               width={300}
               height={100}
@@ -35,7 +35,7 @@ export default function Ready() {
 
         {/* Start Button */}
         <Link
-          href="#"
+          href="/memes"
           className="inline-block"
         >
           <Image
