@@ -60,9 +60,12 @@ export default function Memes() {
 
         {/* Action Buttons */}
         <div className="flex gap-4 mb-8">
-          <button className="w-14 h-14 bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
+          <Link 
+            href="/deposit" 
+            className="w-14 h-14 bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]"
+          >
             <PlusIcon className="w-8 h-8" />
-          </button>
+          </Link>
           <button className="w-14 h-14 bg-white border-2 border-black rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.25)]">
             <ArrowUpRightIcon className="w-8 h-8" />
           </button>

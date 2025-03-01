@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import {
   ArrowLeftIcon,
   Share2Icon,
@@ -10,18 +11,26 @@ import {
   SearchIcon,
   FilterIcon,
 } from "lucide-react"
-import Link from "next/link"
+import CoinModal from "@/components/coin-modal"
 
+interface Coin {
+  name: string
+  color: string
+  change: string
+  amount: string
+  isPositive: boolean
+}
 
 export default function Coins() {
   const [searchQuery, setSearchQuery] = useState("doge")
+  const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null)
 
-  const myCoins = [
-    { name: "APU", color: "bg-green-300", change: "+362%", isPositive: true },
-    { name: "PEPE", color: "bg-yellow-300", change: "+123%", isPositive: true },
-    { name: "FWOG", color: "bg-pink-300", change: "+12%", isPositive: true },
-    { name: "DOGE", color: "bg-red-300", change: "-1%", isPositive: false },
-    { name: "BONK", color: "bg-red-300", change: "-200%", isPositive: false },
+  const myCoins: Coin[] = [
+    { name: "APU", color: "bg-green-300", change: "+362%", amount: "$3.00", isPositive: true },
+    { name: "PEPE", color: "bg-yellow-300", change: "+123%", amount: "$2.50", isPositive: true },
+    { name: "FWOG", color: "bg-pink-300", change: "+12%", amount: "$1.20", isPositive: true },
+    { name: "DOGE", color: "bg-red-300", change: "-1%", amount: "$0.95", isPositive: false },
+    { name: "BONK", color: "bg-red-300", change: "-200%", amount: "$0.10", isPositive: false },
   ]
 
   return (
@@ -93,7 +102,11 @@ export default function Coins() {
           {/* Coin List */}
           <div className="space-y-4">
             {myCoins.map((coin, index) => (
-              <div key={index} className="flex items-center justify-between">
+              <div
+                key={index}
+                className="flex items-center justify-between cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={() => setSelectedCoin(coin)}
+              >
                 <div className="flex items-center">
                   <div className={`w-10 h-10 ${coin.color} rounded-full border-2 border-black mr-3`}></div>
                   <span className="text-2xl font-bold">{coin.name}</span>
@@ -109,6 +122,9 @@ export default function Coins() {
           </div>
         </div>
       </div>
+
+      {/* Coin Modal */}
+      <CoinModal isOpen={!!selectedCoin} onClose={() => setSelectedCoin(null)} coin={selectedCoin || myCoins[0]} />
     </main>
   )
 }
