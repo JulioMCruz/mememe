@@ -64,5 +64,14 @@ target 'mememeapp' do
         end
       end
     end
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        # Fix for ReactCommon module redefinition
+        if target.name == 'React-RCTAppDelegate'
+          config.build_settings['MODULEMAP_FILE'] = ''
+        end
+      end
+    end
   end
 end
