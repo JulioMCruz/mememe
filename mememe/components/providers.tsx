@@ -2,8 +2,9 @@
 import { SessionProvider } from "next-auth/react";
 import { Hex, Hash, OktoProvider } from "@okto_web3/react-sdk";
 import React from "react";
+import { Session } from "next-auth";
  
-function AppProvider({ children, session }) {
+function AppProvider({ children, session }: { children: React.ReactNode, session: Session|null }): React.JSX.Element {
     return (
         <SessionProvider session={session}>
         <OktoProvider
